@@ -1,13 +1,13 @@
 {
     "compilerOptions": {
-        "target": "es5",
-        "module": "commonjs",
+        "target": "es2017",
+        "module": "esnext",
+        "moduleResolution": "node",
         "declaration": true,
         "removeComments": true,
         "noLib": false,
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "skipLibCheck": true,
         "lib": ["es6", "dom"],
         "sourceMap": true,
         "pretty": true,
@@ -18,10 +18,19 @@
         "noImplicitAny": false,
         "noImplicitReturns": true,
         "noImplicitUseStrict": false,
-        "noFallthroughCasesInSwitch": true
-    },
-    "exclude": [
-        "node_modules"
+        "noFallthroughCasesInSwitch": true,
+        "plugins": [{ "transform": "@nativescript/webpack/transformers/ns-transform-native-classes.js", "type": "raw" }]
+  },
+    "include":[
+        "**/*.ts",
+        "!*.d.ts"
     ],
-    "compileOnSave": false
+    "exclude": [
+        "node_modules",
+        "angular"
+    ],
+    "compileOnSave": false,
+    "angularCompilerOptions": {
+        "skipTemplateCodegen": true
+    }
 }
